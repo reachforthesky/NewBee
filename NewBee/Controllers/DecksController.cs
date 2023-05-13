@@ -35,7 +35,7 @@ namespace NewBee.Controllers
                 return NotFound();
             }
 
-            var deck = await _context.Deck
+            var deck = await _context.Deck.Include(x=>x.Cards)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (deck == null)
             {
@@ -58,7 +58,7 @@ namespace NewBee.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Deck deck)
         {
-            Console.WriteLine(deck.Name);
+            ModelState.Remove("Cards");
             if (ModelState.IsValid)
             {
                 Console.WriteLine(deck.Name);
