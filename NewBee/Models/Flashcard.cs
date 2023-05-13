@@ -5,16 +5,11 @@
         public int Id { get; set; }
         public string Question { get; set; }
         public string Answer { get; set; }
+        public Deck Deck { get; set; }
 
         public Flashcard()
         {
                 
-        }
-        public Flashcard(int id, string question, string answer)
-        {
-            Id = id;
-            Question = question;
-            Answer = answer;    
         }
     }
 }

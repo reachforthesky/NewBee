@@ -58,8 +58,10 @@ namespace NewBee.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Deck deck)
         {
+            Console.WriteLine(deck.Name);
             if (ModelState.IsValid)
             {
+                Console.WriteLine(deck.Name);
                 _context.Add(deck);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
