@@ -28,14 +28,16 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => card.Question)
         </dd>
-    </dl>
-    <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => card.Answer)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => card.Answer)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => card.Answer)
+        </dt>
+        <a asp-controller="Flashcards" asp-action="Edit" asp-route-id="@card.Id">Edit</a> |
     </dl>
 }
 <div>
