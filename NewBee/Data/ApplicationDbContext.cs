@@ -11,5 +11,6 @@ namespace NewBee.Data
         {
         }
         public DbSet<NewBee.Models.Flashcard>? Flashcard { get; set; }
+        public DbSet<NewBee.Models.Deck>? Deck { get; set; }
     }
 }
