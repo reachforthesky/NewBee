@@ -88,34 +88,33 @@ namespace NewBee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Question,Answer")] Flashcard flashcard)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Question,Answer,DeckId")] Flashcard flashcard)
         {
             if (id != flashcard.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            
+            try
             {
-                try
-                {
-                    _context.Update(flashcard);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!FlashcardExists(flashcard.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(flashcard);
+                await _context.SaveChangesAsync();
             }
-            return View(flashcard);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!FlashcardExists(flashcard.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+
+            return RedirectToAction("Details" , "Decks", new {id = flashcard.DeckId});
         }
 
         // GET: Flashcards/Delete/5

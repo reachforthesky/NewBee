@@ -238,7 +238,7 @@ namespace NewBee.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Deck");
+                    b.ToTable("Deck", (string)null);
                 });
 
             modelBuilder.Entity("NewBee.Models.Flashcard", b =>
@@ -264,7 +264,7 @@ namespace NewBee.Data.Migrations
 
                     b.HasIndex("DeckId");
 
-                    b.ToTable("Flashcard");
+                    b.ToTable("Flashcard", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
